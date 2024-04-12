@@ -1415,6 +1415,7 @@ void PDP::check_remote_participant_liveliness(
 
 void PDP::set_next_announcement_interval()
 {
+    std::lock_guard<std::recursive_mutex> guardPDP(*this->mp_mutex);
     if (initial_announcements_.count > 0)
     {
         --initial_announcements_.count;
@@ -1441,7 +1442,9 @@ void PDP::resend_ininitial_announcements()
 {
     if (enabled_)
     {
+        this->mp_mutex->lock();
         initial_announcements_ = m_discovery.discovery_config.initial_announcements;
+        this->mp_mutex->unlock();
         set_next_announcement_interval();
         resetParticipantAnnouncement();
     }
