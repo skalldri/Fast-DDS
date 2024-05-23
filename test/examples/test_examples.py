@@ -1,6 +1,7 @@
-
+"""."""
 import subprocess
 import pytest
+import re
 
 config_test_cases = [
     ('--keep-last 10 --transport DEFAULT', '--keep-last 10 --transport DEFAULT'),           # Builtin transports
@@ -187,6 +188,68 @@ def test_hello_world():
         else:
             print('ERROR: sent: ' + str(sent) + ', but received: ' + str(received) +
                   ' (expected: ' + str(sent * 2) + ')')
+            raise subprocess.CalledProcessError(1, '')
+
+    except subprocess.CalledProcessError:
+        for l in out:
+            print(l)
+    except subprocess.TimeoutExpired:
+        print('TIMEOUT')
+        print(out)
+
+    assert(ret)
+
+
+custom_filter_test_cases = [
+    (True),
+    (False)]
+@pytest.mark.parametrize("custom_filter", custom_filter_test_cases)
+def test_content_filter(custom_filter):
+    """."""
+    ret = False
+    out = ''
+    command_prerequisites = 'SUB_ARGS="'
+    if (custom_filter):
+        command_prerequisites += '--filter custom" '
+    else:
+        command_prerequisites += '--filter default" '
+
+    try:
+        out = subprocess.check_output(command_prerequisites +
+            '@DOCKER_EXECUTABLE@ compose -f content_filter.compose.yml up',
+            stderr=subprocess.STDOUT,
+            shell=True,
+            timeout=30
+        ).decode().split('\n')
+
+        sent = 0
+        received = 0
+        data = []
+        for line in out:
+            if 'SENT' in line:
+                sent += 1
+                continue
+
+            if 'RECEIVED' in line:
+                received += 1
+                match = re.search(r'index:\s+(\d+)', line)
+                if match:
+                    number = int(match.group(1))
+                    data.append(number)
+                continue
+
+        ret = True
+        if sent != 0 and received != 0:
+            for elem in data:
+                if (custom_filter):
+                    if not (elem < 3 and elem > 7):
+                        ret = False
+                else:
+                    if not (elem >= 5 or elem <= 9):
+                        ret = False
+        else:
+            print('ERROR: sent: ' + str(sent) + ', received: ' + str(received) +
+                  ' but data are out of the filtered range')
             raise subprocess.CalledProcessError(1, '')
 
     except subprocess.CalledProcessError:
