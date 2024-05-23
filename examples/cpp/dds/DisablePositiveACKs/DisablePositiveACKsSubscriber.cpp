@@ -75,7 +75,7 @@ bool DisablePositiveACKsSubscriber::init(
     rqos.history().kind = KEEP_ALL_HISTORY_QOS;
     rqos.reliability().kind = RELIABLE_RELIABILITY_QOS;
     rqos.durability().kind = TRANSIENT_LOCAL_DURABILITY_QOS;
-    rqos.reliable_reader_qos().disable_positive_ACKs.enabled = disable_positive_acks;
+    rqos.reliable_reader_qos().disable_positive_acks.enabled = disable_positive_acks;
 
     reader_ = subscriber_->create_datareader(topic_, rqos, &listener);
 
