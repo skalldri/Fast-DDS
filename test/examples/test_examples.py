@@ -209,6 +209,7 @@ delivery_test_cases = [
     ('--mechanism intra-process', '--unknown-argument', 1)      # force subscribers to fail
 ]
 
+@pytest.mark.timeout(300)
 @pytest.mark.parametrize("pub_args, sub_args, repetitions", delivery_test_cases)
 def test_delivery_mechanisms(pub_args, sub_args, repetitions):
     """."""
@@ -256,6 +257,7 @@ delivery_timeout_test_cases = [
     ('--mechanism intra-process --ignore-local-endpoints', '--unknown-argument')    # force subscribers to fail
 ]
 
+@pytest.mark.timeout(300)
 @pytest.mark.parametrize("pub_args, sub_args", delivery_timeout_test_cases)
 def test_delivery_mechanisms_timeout(pub_args, sub_args):
     """."""
