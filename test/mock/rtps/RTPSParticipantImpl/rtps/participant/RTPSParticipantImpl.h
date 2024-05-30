@@ -432,7 +432,7 @@ private:
 
     MockParticipantListener listener_;
 
-    ResourceEvent events_;
+    ::testing::NiceMock<ResourceEvent> events_;
 
     RTPSParticipantAttributes attr_;
 
