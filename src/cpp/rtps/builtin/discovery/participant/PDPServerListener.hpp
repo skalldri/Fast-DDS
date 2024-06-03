@@ -58,6 +58,12 @@ public:
     void onNewCacheChangeAdded(
             fastrtps::rtps::RTPSReader* reader,
             const fastrtps::rtps::CacheChange_t* const change) override;
+
+protected:
+
+    bool check_discovery_conditions(
+            fastrtps::rtps::ParticipantProxyData& participant_data,
+            void* extra_data) override;
 };
 
 
