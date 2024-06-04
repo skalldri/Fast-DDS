@@ -191,7 +191,7 @@ void DataSharingListener::process_new_data ()
 
                 if (reader_->processDataMsg(&ch))
                 {
-                    pool->release_payload(ch);
+                    pool->release_payload(ch.serializedPayload);
                     pool->advance_to_next_payload();
                 }
             }
