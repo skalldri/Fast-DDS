@@ -22,7 +22,7 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-class ChainingSenderResource : public fastdds::rtps::SenderResource
+class ChainingSenderResource : public SenderResource
 {
 public:
 
@@ -40,10 +40,10 @@ public:
                 };
 
         send_lambda_ = [this, &transport](
-            const fastdds::rtps::octet* data,
+            const octet* data,
             uint32_t dataSize,
-            fastdds::rtps::LocatorsIterator* destination_locators_begin,
-            fastdds::rtps::LocatorsIterator* destination_locators_end,
+            LocatorsIterator* destination_locators_begin,
+            LocatorsIterator* destination_locators_end,
             const std::chrono::steady_clock::time_point& timeout) -> bool
                 {
                     if (low_sender_resource_)
@@ -56,13 +56,13 @@ public:
                 };
     }
 
-    fastdds::rtps::SenderResource* lower_sender_cast()
+    SenderResource* lower_sender_cast()
     {
-        fastdds::rtps::SenderResource* lower_sender_cast = nullptr;
+        SenderResource* lower_sender_cast = nullptr;
 
         if (low_sender_resource_)
         {
-            lower_sender_cast = static_cast<fastdds::rtps::SenderResource*>(low_sender_resource_.get());
+            lower_sender_cast = static_cast<SenderResource*>(low_sender_resource_.get());
         }
 
         return lower_sender_cast;

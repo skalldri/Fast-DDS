@@ -41,11 +41,11 @@ public:
             const test_UDPv4TransportDescriptor& descriptor);
 
     virtual bool send(
-            const fastdds::rtps::octet* send_buffer,
+            const octet* send_buffer,
             uint32_t send_buffer_size,
             eProsimaUDPSocket& socket,
-            fastdds::rtps::LocatorsIterator* destination_locators_begin,
-            fastdds::rtps::LocatorsIterator* destination_locators_end,
+            LocatorsIterator* destination_locators_begin,
+            LocatorsIterator* destination_locators_end,
             bool only_multicast_purpose,
             bool whitelisted,
             const std::chrono::steady_clock::time_point& max_blocking_time_point) override;
@@ -107,17 +107,17 @@ private:
             const Locator& remote_locator);
 
     bool log_drop(
-            const fastdds::rtps::octet* buffer,
+            const octet* buffer,
             uint32_t size);
     bool packet_should_drop(
-            const fastdds::rtps::octet* send_buffer,
+            const octet* send_buffer,
             uint32_t send_buffer_size);
     bool random_chance_drop();
     bool should_be_dropped(
             PercentageData* percentage);
 
     bool send(
-            const fastdds::rtps::octet* send_buffer,
+            const octet* send_buffer,
             uint32_t send_buffer_size,
             eProsimaUDPSocket& socket,
             const Locator& remote_locator,

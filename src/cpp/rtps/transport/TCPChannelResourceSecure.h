@@ -54,14 +54,14 @@ public:
     void disconnect() override;
 
     uint32_t read(
-            fastdds::rtps::octet* buffer,
+            octet* buffer,
             std::size_t size,
             asio::error_code& ec) override;
 
     size_t send(
-            const fastdds::rtps::octet* header,
+            const octet* header,
             size_t header_size,
-            const fastdds::rtps::octet* data,
+            const octet* data,
             size_t size,
             asio::error_code& ec) override;
 

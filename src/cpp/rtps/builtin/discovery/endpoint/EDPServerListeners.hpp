@@ -29,15 +29,6 @@ namespace rtps {
 
 class RTPSReader;
 struct CacheChange_t;
-
-} // namespace rtps
-} // namespace fastdds
-} // namespace eprosima
-
-namespace eprosima {
-namespace fastdds {
-namespace rtps {
-
 class PDPServer;
 class EDPServer;
 

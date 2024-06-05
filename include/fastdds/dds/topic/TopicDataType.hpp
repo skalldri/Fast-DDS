@@ -46,9 +46,7 @@ namespace rtps {
 struct SerializedPayload_t;
 struct InstanceHandle_t;
 } // namespace rtps
-} // namespace fastdds
 
-namespace fastdds {
 namespace dds {
 
 class TypeSupport;

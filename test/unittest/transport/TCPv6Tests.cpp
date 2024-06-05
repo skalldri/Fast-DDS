@@ -34,8 +34,6 @@
 
 using namespace eprosima::fastdds::rtps;
 using namespace eprosima::fastdds;
-using TCPv6Transport = eprosima::fastdds::rtps::TCPv6Transport;
-using TCPv6TransportDescriptor = eprosima::fastdds::rtps::TCPv6TransportDescriptor;
 
 #if defined(_WIN32)
 #define GET_PID _getpid

@@ -24,13 +24,13 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-class SharedMemSenderResource : public fastdds::rtps::SenderResource
+class SharedMemSenderResource : public SenderResource
 {
 public:
 
     SharedMemSenderResource(
             SharedMemTransport& transport)
-        : fastdds::rtps::SenderResource(transport.kind())
+        : SenderResource(transport.kind())
     {
         // Implementation functions are bound to the right transport parameters
         clean_up = []()
@@ -39,10 +39,10 @@ public:
                 };
 
         send_lambda_ = [&transport](
-            const fastdds::rtps::octet* data,
+            const octet* data,
             uint32_t dataSize,
-            fastdds::rtps::LocatorsIterator* destination_locators_begin,
-            fastdds::rtps::LocatorsIterator* destination_locators_end,
+            LocatorsIterator* destination_locators_begin,
+            LocatorsIterator* destination_locators_end,
             const std::chrono::steady_clock::time_point& max_blocking_time_point) -> bool
                 {
                     return transport.send(data, dataSize, destination_locators_begin, destination_locators_end,

@@ -138,17 +138,17 @@ protected:
     //! Methods to manage the TCP headers and their CRC values.
     bool check_crc(
             const TCPHeader& header,
-            const fastdds::rtps::octet* data,
+            const octet* data,
             uint32_t size) const;
 
     void calculate_crc(
             TCPHeader& header,
-            const fastdds::rtps::octet* data,
+            const octet* data,
             uint32_t size) const;
 
     void fill_rtcp_header(
             TCPHeader& header,
-            const fastdds::rtps::octet* send_buffer,
+            const octet* send_buffer,
             uint32_t send_buffer_size,
             uint16_t logical_port) const;
 
@@ -174,7 +174,7 @@ protected:
             std::weak_ptr<RTCPMessageManager> rtcp_manager);
 
     bool read_body(
-            fastdds::rtps::octet* receive_buffer,
+            octet* receive_buffer,
             uint32_t receive_buffer_capacity,
             uint32_t* bytes_received,
             std::shared_ptr<TCPChannelResource>& channel,
@@ -225,7 +225,7 @@ protected:
      * There must exist a channel bound to the locator, otherwise the send will be skipped.
      */
     bool send(
-            const fastdds::rtps::octet* send_buffer,
+            const octet* send_buffer,
             uint32_t send_buffer_size,
             const eprosima::fastdds::rtps::Locator_t& locator,
             const Locator& remote_locator);
@@ -249,7 +249,7 @@ public:
 
     //! Resets the locator bound to the sender resource.
     void SenderResourceHasBeenClosed(
-            fastdds::rtps::Locator_t& locator);
+            Locator_t& locator);
 
     //! Reports whether Locators correspond to the same port.
     bool DoInputLocatorsMatch(
@@ -278,7 +278,7 @@ public:
     virtual uint16_t GetMaxLogicalPort() const = 0;
 
     bool init(
-            const fastdds::rtps::PropertyPolicy* properties = nullptr,
+            const PropertyPolicy* properties = nullptr,
             const uint32_t& max_msg_size_no_frag = 0) override;
 
     //! Checks whether there are open and bound sockets for the given port.
@@ -331,7 +331,7 @@ public:
      */
     bool OpenOutputChannels(
             SendResourceList& sender_resource_list,
-            const fastdds::rtps::LocatorSelectorEntry& locator_selector_entry) override;
+            const LocatorSelectorEntry& locator_selector_entry) override;
 
     /**
      * Acts like OpenOutputChannel but ensures that a new CONNECT channel is created for the given locator
@@ -382,10 +382,10 @@ public:
     bool Receive(
             std::weak_ptr<RTCPMessageManager>& rtcp_manager,
             std::shared_ptr<TCPChannelResource>& channel,
-            fastdds::rtps::octet* receive_buffer,
+            octet* receive_buffer,
             uint32_t receive_buffer_capacity,
             uint32_t& receive_buffer_size,
-            fastdds::rtps::Endianness_t msg_endian,
+            Endianness_t msg_endian,
             Locator& remote_locator);
 
     /**
@@ -400,11 +400,11 @@ public:
      * so should not be reuse.
      */
     bool send(
-            const fastdds::rtps::octet* send_buffer,
+            const octet* send_buffer,
             uint32_t send_buffer_size,
-            const fastdds::rtps::Locator_t& locator,
-            fastdds::rtps::LocatorsIterator* destination_locators_begin,
-            fastdds::rtps::LocatorsIterator* destination_locators_end);
+            const Locator_t& locator,
+            LocatorsIterator* destination_locators_begin,
+            LocatorsIterator* destination_locators_end);
 
     /**
      * Performs the locator selection algorithm for this transport.
@@ -421,7 +421,7 @@ public:
      * @param [in, out] selector Locator selector.
      */
     void select_locators(
-            fastdds::rtps::LocatorSelector& selector) const override;
+            LocatorSelector& selector) const override;
 
     //! Callback called each time that an incoming connection is accepted.
     void SocketAccepted(
@@ -470,7 +470,7 @@ public:
 
     bool configureInitialPeerLocator(
             Locator& locator,
-            const fastdds::rtps::PortParameters& port_params,
+            const PortParameters& port_params,
             uint32_t domainId,
             LocatorList& list) const override;
 

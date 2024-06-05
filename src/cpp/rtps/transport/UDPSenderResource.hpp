@@ -25,7 +25,7 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-class UDPSenderResource : public fastdds::rtps::SenderResource
+class UDPSenderResource : public SenderResource
 {
 public:
 
@@ -47,10 +47,10 @@ public:
                 };
 
         send_lambda_ = [this, &transport](
-            const fastdds::rtps::octet* data,
+            const octet* data,
             uint32_t dataSize,
-            fastdds::rtps::LocatorsIterator* destination_locators_begin,
-            fastdds::rtps::LocatorsIterator* destination_locators_end,
+            LocatorsIterator* destination_locators_begin,
+            LocatorsIterator* destination_locators_end,
             const std::chrono::steady_clock::time_point& max_blocking_time_point) -> bool
                 {
                     return transport.send(data, dataSize, socket_, destination_locators_begin,

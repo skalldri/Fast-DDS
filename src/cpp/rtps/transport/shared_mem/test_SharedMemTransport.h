@@ -30,10 +30,10 @@ public:
             const test_SharedMemTransportDescriptor&);
 
     bool send(
-            const fastdds::rtps::octet* send_buffer,
+            const octet* send_buffer,
             uint32_t send_buffer_size,
-            fastdds::rtps::LocatorsIterator* destination_locators_begin,
-            fastdds::rtps::LocatorsIterator* destination_locators_end,
+            LocatorsIterator* destination_locators_begin,
+            LocatorsIterator* destination_locators_end,
             const std::chrono::steady_clock::time_point& max_blocking_time_point) override;
 
     SharedMemChannelResource* CreateInputChannelResource(

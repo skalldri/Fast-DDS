@@ -26,14 +26,14 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-class TCPSenderResource : public fastdds::rtps::SenderResource
+class TCPSenderResource : public SenderResource
 {
 public:
 
     TCPSenderResource(
             TCPTransportInterface& transport,
             eprosima::fastdds::rtps::Locator_t& locator)
-        : fastdds::rtps::SenderResource(transport.kind())
+        : SenderResource(transport.kind())
         , locator_(locator)
     {
         // Implementation functions are bound to the right transport parameters
@@ -43,10 +43,10 @@ public:
                 };
 
         send_lambda_ = [this, &transport](
-            const fastdds::rtps::octet* data,
+            const octet* data,
             uint32_t dataSize,
-            fastdds::rtps::LocatorsIterator* destination_locators_begin,
-            fastdds::rtps::LocatorsIterator* destination_locators_end,
+            LocatorsIterator* destination_locators_begin,
+            LocatorsIterator* destination_locators_end,
             const std::chrono::steady_clock::time_point&) -> bool
                 {
                     return transport.send(data, dataSize, locator_, destination_locators_begin,
@@ -62,7 +62,7 @@ public:
         }
     }
 
-    fastdds::rtps::Locator_t& locator()
+    Locator_t& locator()
     {
         return locator_;
     }
@@ -102,7 +102,7 @@ private:
     TCPSenderResource& operator =(
             const SenderResource&) = delete;
 
-    fastdds::rtps::Locator_t locator_;
+    Locator_t locator_;
 };
 
 } // namespace rtps
