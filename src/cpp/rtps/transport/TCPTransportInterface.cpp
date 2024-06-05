@@ -76,13 +76,13 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-using octet = fastrtps::rtps::octet;
-using IPLocator = fastrtps::rtps::IPLocator;
-using SenderResource = fastrtps::rtps::SenderResource;
-using CDRMessage_t = fastrtps::rtps::CDRMessage_t;
-using LocatorSelector = fastrtps::rtps::LocatorSelector;
-using LocatorSelectorEntry = fastrtps::rtps::LocatorSelectorEntry;
-using PortParameters = fastrtps::rtps::PortParameters;
+using octet = fastdds::rtps::octet;
+using IPLocator = fastdds::rtps::IPLocator;
+using SenderResource = fastdds::rtps::SenderResource;
+using CDRMessage_t = fastdds::rtps::CDRMessage_t;
+using LocatorSelector = fastdds::rtps::LocatorSelector;
+using LocatorSelectorEntry = fastdds::rtps::LocatorSelectorEntry;
+using PortParameters = fastdds::rtps::PortParameters;
 using Log = fastdds::dds::Log;
 
 static const int s_default_keep_alive_frequency = 5000; // 5 SECONDS
@@ -435,7 +435,7 @@ bool TCPTransportInterface::DoInputLocatorsMatch(
 }
 
 bool TCPTransportInterface::init(
-        const fastrtps::rtps::PropertyPolicy*,
+        const fastdds::rtps::PropertyPolicy*,
         const uint32_t& max_msg_size_no_frag)
 {
     uint32_t maximumMessageSize = max_msg_size_no_frag == 0 ? s_maximumMessageSize : max_msg_size_no_frag;
@@ -661,7 +661,7 @@ bool TCPTransportInterface::transform_remote_locator(
 }
 
 void TCPTransportInterface::SenderResourceHasBeenClosed(
-        fastrtps::rtps::Locator_t& locator)
+        fastdds::rtps::Locator_t& locator)
 {
     // The TCPSendResource associated channel cannot be removed from the channel_resources_ map. On transport's destruction
     // this map is consulted to send the unbind requests. If not sending it, the other participant wouldn't disconnect the
@@ -821,7 +821,7 @@ bool TCPTransportInterface::OpenOutputChannel(
         if (IPLocator::getPhysicalPort(physical_locator) == listening_port)
         {
             std::vector<Locator> list;
-            std::vector<fastrtps::rtps::IPFinder::info_IP> local_interfaces;
+            std::vector<fastdds::rtps::IPFinder::info_IP> local_interfaces;
             get_ips(local_interfaces, false, false);
             for (const auto& interface_it : local_interfaces)
             {
@@ -886,7 +886,7 @@ bool TCPTransportInterface::OpenOutputChannels(
         const LocatorSelectorEntry& locator_selector_entry)
 {
     bool success = false;
-    if (locator_selector_entry.remote_guid == fastrtps::rtps::c_Guid_Unknown)
+    if (locator_selector_entry.remote_guid == fastdds::rtps::c_Guid_Unknown)
     {
         // Only unicast is used in TCP
         for (size_t i = 0; i < locator_selector_entry.state.unicast.size(); ++i)
@@ -1133,7 +1133,7 @@ void TCPTransportInterface::perform_listen_operation(
     {
         // Blocking receive.
         CDRMessage_t& msg = channel->message_buffer();
-        fastrtps::rtps::CDRMessage::initCDRMsg(&msg);
+        fastdds::rtps::CDRMessage::initCDRMsg(&msg);
         if (!Receive(rtcp_manager, channel, msg.buffer, msg.max_size, msg.length, msg.msg_endian, remote_locator))
         {
             continue;
@@ -1274,7 +1274,7 @@ bool TCPTransportInterface::Receive(
         octet* receive_buffer,
         uint32_t receive_buffer_capacity,
         uint32_t& receive_buffer_size,
-        fastrtps::rtps::Endianness_t msg_endian,
+        fastdds::rtps::Endianness_t msg_endian,
         Locator& remote_locator)
 {
     bool success = false;
@@ -1423,11 +1423,11 @@ bool TCPTransportInterface::Receive(
 bool TCPTransportInterface::send(
         const octet* send_buffer,
         uint32_t send_buffer_size,
-        const fastrtps::rtps::Locator_t& locator,
-        fastrtps::rtps::LocatorsIterator* destination_locators_begin,
-        fastrtps::rtps::LocatorsIterator* destination_locators_end)
+        const fastdds::rtps::Locator_t& locator,
+        fastdds::rtps::LocatorsIterator* destination_locators_begin,
+        fastdds::rtps::LocatorsIterator* destination_locators_end)
 {
-    fastrtps::rtps::LocatorsIterator& it = *destination_locators_begin;
+    fastdds::rtps::LocatorsIterator& it = *destination_locators_begin;
 
     bool ret = true;
 
@@ -1447,7 +1447,7 @@ bool TCPTransportInterface::send(
 bool TCPTransportInterface::send(
         const octet* send_buffer,
         uint32_t send_buffer_size,
-        const fastrtps::rtps::Locator_t& locator,
+        const fastdds::rtps::Locator_t& locator,
         const Locator& remote_locator)
 {
     using namespace eprosima::fastdds::statistics::rtps;
@@ -1563,7 +1563,7 @@ bool TCPTransportInterface::send(
 void TCPTransportInterface::select_locators(
         LocatorSelector& selector) const
 {
-    fastrtps::ResourceLimitedVector<LocatorSelectorEntry*>& entries =  selector.transport_starts();
+    fastdds::ResourceLimitedVector<LocatorSelectorEntry*>& entries =  selector.transport_starts();
 
     for (size_t i = 0; i < entries.size(); ++i)
     {

@@ -58,7 +58,7 @@ using ParameterList = eprosima::fastdds::dds::ParameterList;
     (void)seq_num
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 void EDPBasePUBListener::add_writer_from_change(
@@ -86,7 +86,7 @@ void EDPBasePUBListener::add_writer_from_change(
         // Callback function to continue after typelookup is complete
         fastdds::dds::builtin::AsyncGetTypeWriterCallback after_typelookup_callback =
                 [reader, change, edp, &network, writer_added_callback]
-                    (eprosima::ProxyPool<eprosima::fastrtps::rtps::WriterProxyData>::smart_ptr& temp_writer_data)
+                    (eprosima::ProxyPool<eprosima::fastdds::rtps::WriterProxyData>::smart_ptr& temp_writer_data)
                 {
                     //LOAD INFORMATION IN DESTINATION WRITER PROXY DATA
                     auto copy_data_fun = [&temp_writer_data, &network](
@@ -226,7 +226,7 @@ void EDPBaseSUBListener::add_reader_from_change(
         // Callback function to continue after typelookup is complete
         fastdds::dds::builtin::AsyncGetTypeReaderCallback after_typelookup_callback =
                 [reader, change, edp, &network, reader_added_callback]
-                    (eprosima::ProxyPool<eprosima::fastrtps::rtps::ReaderProxyData>::smart_ptr& temp_reader_data)
+                    (eprosima::ProxyPool<eprosima::fastdds::rtps::ReaderProxyData>::smart_ptr& temp_reader_data)
                 {
                     auto copy_data_fun = [&temp_reader_data, &network](
                         ReaderProxyData* data,
@@ -376,5 +376,5 @@ void EDPSimpleSUBListener::onWriterChangeReceivedByAll(
 }
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

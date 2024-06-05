@@ -40,13 +40,13 @@
 #define TOPIC_DATA_TYPE_API_HAS_CONSTRUCT_SAMPLE
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 
 namespace rtps {
 struct SerializedPayload_t;
 struct InstanceHandle_t;
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 
 namespace fastdds {
 namespace dds {
@@ -84,7 +84,7 @@ public:
     // FASTDDS_TODO_BEFORE(3, 0, "Remove this overload")
     FASTDDS_EXPORTED_API virtual bool serialize(
             void* data,
-            fastrtps::rtps::SerializedPayload_t* payload) = 0;
+            fastdds::rtps::SerializedPayload_t* payload) = 0;
 
     /**
      * Serialize method, it should be implemented by the user, since it is abstract. If not implemented, this method
@@ -98,7 +98,7 @@ public:
      */
     FASTDDS_EXPORTED_API virtual bool serialize(
             void* data,
-            fastrtps::rtps::SerializedPayload_t* payload,
+            fastdds::rtps::SerializedPayload_t* payload,
             DataRepresentationId_t data_representation);
 
     /**
@@ -109,7 +109,7 @@ public:
      * @return True if correct.
      */
     FASTDDS_EXPORTED_API virtual bool deserialize(
-            fastrtps::rtps::SerializedPayload_t* payload,
+            fastdds::rtps::SerializedPayload_t* payload,
             void* data) = 0;
 
     /*!
@@ -157,7 +157,7 @@ public:
      */
     FASTDDS_EXPORTED_API virtual bool getKey(
             void* data,
-            fastrtps::rtps::InstanceHandle_t* ihandle,
+            fastdds::rtps::InstanceHandle_t* ihandle,
             bool force_md5 = false) = 0;
 
     /**

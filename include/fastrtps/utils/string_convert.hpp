@@ -25,14 +25,14 @@
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS_PUBLIC
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 
 std::wstring wstring_from_bytes(
         const std::string& str);
 std::string wstring_to_bytes(
         const std::wstring& str);
 
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */
 #endif // ifndef DOXYGEN_SHOULD_SKIP_THIS_PUBLIC
 

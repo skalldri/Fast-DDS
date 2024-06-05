@@ -23,7 +23,7 @@
 #include <rtps/messages/RTPSMessageGroup.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 /**
@@ -87,7 +87,7 @@ public:
 };
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */
 
 #endif /* RTPSGAPBUILDER_HPP */

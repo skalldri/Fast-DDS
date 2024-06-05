@@ -22,7 +22,7 @@
 #include "../participant/RTPSParticipantImpl.h"
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 SendBuffersManager::SendBuffersManager(
@@ -134,5 +134,5 @@ void SendBuffersManager::add_one_buffer(
 }
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

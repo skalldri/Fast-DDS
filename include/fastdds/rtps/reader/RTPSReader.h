@@ -35,7 +35,7 @@
 #include <fastdds/utils/TimedConditionVariable.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 // Forward declarations
@@ -239,7 +239,7 @@ public:
             WriterProxy** wp) = 0;
 
     FASTDDS_EXPORTED_API bool wait_for_unread_cache(
-            const eprosima::fastrtps::Duration_t& timeout);
+            const eprosima::fastdds::Duration_t& timeout);
 
     FASTDDS_EXPORTED_API uint64_t get_unread_count() const;
 
@@ -530,7 +530,7 @@ private:
 };
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */
 
 #endif /* _FASTDDS_RTPS_READER_RTPSREADER_H_ */

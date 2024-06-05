@@ -26,7 +26,7 @@
 #include <rtps/messages/RTPSMessageCreator.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 /**
@@ -107,7 +107,7 @@ public:
 };
 
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima
 
 #endif // DOXYGEN_SHOULD_SKIP_THIS_PUBLIC

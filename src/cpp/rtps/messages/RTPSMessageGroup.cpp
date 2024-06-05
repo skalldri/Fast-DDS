@@ -33,7 +33,7 @@
 #include <statistics/rtps/messages/RTPSStatisticsMessages.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 /**
@@ -929,5 +929,5 @@ bool RTPSMessageGroup::add_nackfrag(
 }
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

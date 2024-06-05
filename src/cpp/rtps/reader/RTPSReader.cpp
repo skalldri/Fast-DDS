@@ -36,7 +36,7 @@
 
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 RTPSReader::RTPSReader(
@@ -332,7 +332,7 @@ void RTPSReader::set_last_notified(
 }
 
 bool RTPSReader::wait_for_unread_cache(
-        const eprosima::fastrtps::Duration_t& timeout)
+        const eprosima::fastdds::Duration_t& timeout)
 {
     auto time_out = std::chrono::steady_clock::now() + std::chrono::seconds(timeout.seconds) +
             std::chrono::nanoseconds(timeout.nanosec);
@@ -451,5 +451,5 @@ void RTPSReader::set_enabled_statistics_writers_mask(
 #endif // FASTDDS_STATISTICS
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

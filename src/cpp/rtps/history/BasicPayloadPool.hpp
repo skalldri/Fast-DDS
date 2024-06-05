@@ -28,7 +28,7 @@
 #include <memory>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 namespace detail {
@@ -103,7 +103,7 @@ private:
 };
 
 }  // namespace rtps
-}  // namespace fastrtps
+}  // namespace fastdds
 }  // namespace eprosima
 
 #endif  // RTPS_HISTORY_BASICPAYLOADPOOL_HPP

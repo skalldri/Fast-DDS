@@ -43,8 +43,8 @@
 #include "../common/env_var_utils.hpp"
 
 using namespace eprosima::fastdds;
-using namespace eprosima::fastrtps;
-using namespace eprosima::fastrtps::rtps;
+using namespace eprosima::fastdds;
+using namespace eprosima::fastdds::rtps;
 using namespace eprosima::testing;
 using namespace ::testing;
 
@@ -517,10 +517,10 @@ TEST_P(XMLProfileParserTests, XMLParserParticipant)
     EXPECT_TRUE(rtps_atts.ignore_non_matching_locators);
     EXPECT_EQ(rtps_atts.sendSocketBufferSize, 32u);
     EXPECT_EQ(rtps_atts.listenSocketBufferSize, 1000u);
-    EXPECT_EQ(builtin.discovery_config.discoveryProtocol, eprosima::fastrtps::rtps::DiscoveryProtocol::SIMPLE);
+    EXPECT_EQ(builtin.discovery_config.discoveryProtocol, eprosima::fastdds::rtps::DiscoveryProtocol::SIMPLE);
     EXPECT_EQ(builtin.discovery_config.ignoreParticipantFlags,
-            eprosima::fastrtps::rtps::ParticipantFilteringFlags_t::FILTER_SAME_PROCESS |
-            eprosima::fastrtps::rtps::ParticipantFilteringFlags_t::FILTER_DIFFERENT_HOST);
+            eprosima::fastdds::rtps::ParticipantFilteringFlags_t::FILTER_SAME_PROCESS |
+            eprosima::fastdds::rtps::ParticipantFilteringFlags_t::FILTER_DIFFERENT_HOST);
     EXPECT_EQ(builtin.use_WriterLivelinessProtocol, false);
     EXPECT_EQ(builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol, true);
     EXPECT_EQ(builtin.discovery_config.use_STATIC_EndpointDiscoveryProtocol, false);
@@ -617,10 +617,10 @@ TEST_F(XMLProfileParserBasicTests, XMLParserParticipantDeprecated)
     EXPECT_TRUE(rtps_atts.ignore_non_matching_locators);
     EXPECT_EQ(rtps_atts.sendSocketBufferSize, 32u);
     EXPECT_EQ(rtps_atts.listenSocketBufferSize, 1000u);
-    EXPECT_EQ(builtin.discovery_config.discoveryProtocol, eprosima::fastrtps::rtps::DiscoveryProtocol::SIMPLE);
+    EXPECT_EQ(builtin.discovery_config.discoveryProtocol, eprosima::fastdds::rtps::DiscoveryProtocol::SIMPLE);
     EXPECT_EQ(builtin.discovery_config.ignoreParticipantFlags,
-            eprosima::fastrtps::rtps::ParticipantFilteringFlags_t::FILTER_SAME_PROCESS |
-            eprosima::fastrtps::rtps::ParticipantFilteringFlags_t::FILTER_DIFFERENT_HOST);
+            eprosima::fastdds::rtps::ParticipantFilteringFlags_t::FILTER_SAME_PROCESS |
+            eprosima::fastdds::rtps::ParticipantFilteringFlags_t::FILTER_DIFFERENT_HOST);
     EXPECT_EQ(builtin.use_WriterLivelinessProtocol, false);
     EXPECT_EQ(builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol, true);
     EXPECT_EQ(builtin.discovery_config.use_STATIC_EndpointDiscoveryProtocol, false);
@@ -700,10 +700,10 @@ TEST_P(XMLProfileParserTests, XMLParserDefaultParticipantProfile)
     EXPECT_TRUE(rtps_atts.ignore_non_matching_locators);
     EXPECT_EQ(rtps_atts.sendSocketBufferSize, 32u);
     EXPECT_EQ(rtps_atts.listenSocketBufferSize, 1000u);
-    EXPECT_EQ(builtin.discovery_config.discoveryProtocol, eprosima::fastrtps::rtps::DiscoveryProtocol::SIMPLE);
+    EXPECT_EQ(builtin.discovery_config.discoveryProtocol, eprosima::fastdds::rtps::DiscoveryProtocol::SIMPLE);
     EXPECT_EQ(builtin.discovery_config.ignoreParticipantFlags,
-            eprosima::fastrtps::rtps::ParticipantFilteringFlags_t::FILTER_SAME_PROCESS |
-            eprosima::fastrtps::rtps::ParticipantFilteringFlags_t::FILTER_DIFFERENT_HOST);
+            eprosima::fastdds::rtps::ParticipantFilteringFlags_t::FILTER_SAME_PROCESS |
+            eprosima::fastdds::rtps::ParticipantFilteringFlags_t::FILTER_DIFFERENT_HOST);
     EXPECT_EQ(builtin.use_WriterLivelinessProtocol, false);
     EXPECT_EQ(builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol, true);
     EXPECT_EQ(builtin.discovery_config.use_STATIC_EndpointDiscoveryProtocol, false);
@@ -783,10 +783,10 @@ TEST_F(XMLProfileParserBasicTests, XMLParserDefaultParticipantProfileDeprecated)
     EXPECT_TRUE(rtps_atts.ignore_non_matching_locators);
     EXPECT_EQ(rtps_atts.sendSocketBufferSize, 32u);
     EXPECT_EQ(rtps_atts.listenSocketBufferSize, 1000u);
-    EXPECT_EQ(builtin.discovery_config.discoveryProtocol, eprosima::fastrtps::rtps::DiscoveryProtocol::SIMPLE);
+    EXPECT_EQ(builtin.discovery_config.discoveryProtocol, eprosima::fastdds::rtps::DiscoveryProtocol::SIMPLE);
     EXPECT_EQ(builtin.discovery_config.ignoreParticipantFlags,
-            eprosima::fastrtps::rtps::ParticipantFilteringFlags_t::FILTER_SAME_PROCESS |
-            eprosima::fastrtps::rtps::ParticipantFilteringFlags_t::FILTER_DIFFERENT_HOST);
+            eprosima::fastdds::rtps::ParticipantFilteringFlags_t::FILTER_SAME_PROCESS |
+            eprosima::fastdds::rtps::ParticipantFilteringFlags_t::FILTER_DIFFERENT_HOST);
     EXPECT_EQ(builtin.use_WriterLivelinessProtocol, false);
     EXPECT_EQ(builtin.discovery_config.use_SIMPLE_EndpointDiscoveryProtocol, true);
     EXPECT_EQ(builtin.discovery_config.use_STATIC_EndpointDiscoveryProtocol, false);
@@ -1584,9 +1584,9 @@ TEST_F(XMLProfileParserBasicTests, log_register_stdouterr)
 
     EXPECT_CALL(*log_mock, ClearConsumers()).Times(1);
     EXPECT_CALL(*log_mock, RegisterConsumer(IsStdoutErrConsumer())).Times(1);
-    eprosima::fastrtps::xmlparser::XMLP_ret ret =
+    eprosima::fastdds::xmlparser::XMLP_ret ret =
             xmlparser::XMLProfileManager::loadXMLFile("log_stdouterr_profile.xml");
-    ASSERT_EQ(eprosima::fastrtps::xmlparser::XMLP_ret::XML_OK, ret);
+    ASSERT_EQ(eprosima::fastdds::xmlparser::XMLP_ret::XML_OK, ret);
 }
 
 /*
@@ -1603,9 +1603,9 @@ TEST_F(XMLProfileParserBasicTests, log_register_stdouterr_wrong_property_name)
 
     EXPECT_CALL(*log_mock, ClearConsumers()).Times(1);
     EXPECT_CALL(*log_mock, RegisterConsumer(IsStdoutErrConsumer())).Times(1);
-    eprosima::fastrtps::xmlparser::XMLP_ret ret = xmlparser::XMLProfileManager::loadXMLFile(
+    eprosima::fastdds::xmlparser::XMLP_ret ret = xmlparser::XMLProfileManager::loadXMLFile(
         "log_stdouterr_wrong_property_name_profile_invalid.xml");
-    ASSERT_EQ(eprosima::fastrtps::xmlparser::XMLP_ret::XML_ERROR, ret);
+    ASSERT_EQ(eprosima::fastdds::xmlparser::XMLP_ret::XML_ERROR, ret);
 }
 
 /*
@@ -1622,9 +1622,9 @@ TEST_F(XMLProfileParserBasicTests, log_register_stdouterr_wrong_property_value)
 
     EXPECT_CALL(*log_mock, ClearConsumers()).Times(1);
     EXPECT_CALL(*log_mock, RegisterConsumer(IsStdoutErrConsumer())).Times(1);
-    eprosima::fastrtps::xmlparser::XMLP_ret ret = xmlparser::XMLProfileManager::loadXMLFile(
+    eprosima::fastdds::xmlparser::XMLP_ret ret = xmlparser::XMLProfileManager::loadXMLFile(
         "log_stdouterr_wrong_property_value_profile_invalid.xml");
-    ASSERT_EQ(eprosima::fastrtps::xmlparser::XMLP_ret::XML_ERROR, ret);
+    ASSERT_EQ(eprosima::fastdds::xmlparser::XMLP_ret::XML_ERROR, ret);
 }
 
 /*
@@ -1644,9 +1644,9 @@ TEST_F(XMLProfileParserBasicTests, log_register_stdouterr_two_thresholds)
 
     EXPECT_CALL(*log_mock, ClearConsumers()).Times(1);
     EXPECT_CALL(*log_mock, RegisterConsumer(IsStdoutErrConsumer())).Times(1);
-    eprosima::fastrtps::xmlparser::XMLP_ret ret = xmlparser::XMLProfileManager::loadXMLFile(
+    eprosima::fastdds::xmlparser::XMLP_ret ret = xmlparser::XMLProfileManager::loadXMLFile(
         "log_stdouterr_two_thresholds_profile.xml");
-    ASSERT_EQ(eprosima::fastrtps::xmlparser::XMLP_ret::XML_ERROR, ret);
+    ASSERT_EQ(eprosima::fastdds::xmlparser::XMLP_ret::XML_ERROR, ret);
 }
 
 TEST_F(XMLProfileParserBasicTests, file_and_default)

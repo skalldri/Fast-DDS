@@ -34,7 +34,7 @@
  */
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 //Pre define data encapsulation schemes
@@ -194,7 +194,7 @@ struct FASTDDS_EXPORTED_API SerializedPayload_t
 };
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */
 
 #endif /* _FASTDDS_RTPS_SERIALIZEDPAYLOAD_H_ */

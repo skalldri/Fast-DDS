@@ -21,9 +21,9 @@
 #include <fastdds/rtps/reader/RTPSReader.h>
 #include <statistics/types/types.hpp>
 
-using eprosima::fastrtps::RecursiveTimedMutex;
-using eprosima::fastrtps::rtps::RTPSReader;
-using eprosima::fastrtps::rtps::GUID_t;
+using eprosima::fastdds::RecursiveTimedMutex;
+using eprosima::fastdds::rtps::RTPSReader;
+using eprosima::fastdds::rtps::GUID_t;
 
 namespace eprosima {
 namespace fastdds {
@@ -62,8 +62,8 @@ const GUID_t& StatisticsReaderImpl::get_guid() const
 }
 
 void StatisticsReaderImpl::on_data_notify(
-        const fastrtps::rtps::GUID_t& writer_guid,
-        const fastrtps::rtps::Time_t& source_timestamp)
+        const fastdds::rtps::GUID_t& writer_guid,
+        const fastdds::rtps::Time_t& source_timestamp)
 {
     if (!are_statistics_writers_enabled(EventKind::HISTORY2HISTORY_LATENCY))
     {
@@ -71,8 +71,8 @@ void StatisticsReaderImpl::on_data_notify(
     }
 
     // Get current timestamp
-    fastrtps::rtps::Time_t current_time;
-    fastrtps::rtps::Time_t::now(current_time);
+    fastdds::rtps::Time_t current_time;
+    fastdds::rtps::Time_t::now(current_time);
 
     // Calc latency
     auto ns = (current_time - source_timestamp).to_ns();
@@ -157,7 +157,7 @@ void StatisticsReaderImpl::on_subscribe_throughput(
         time_point<steady_clock> former_timepoint;
         auto& current_timepoint = get_members()->last_history_change_;
         {
-            lock_guard<fastrtps::RecursiveTimedMutex> lock(get_statistics_mutex());
+            lock_guard<fastdds::RecursiveTimedMutex> lock(get_statistics_mutex());
             former_timepoint = current_timepoint;
             current_timepoint = steady_clock::now();
         }

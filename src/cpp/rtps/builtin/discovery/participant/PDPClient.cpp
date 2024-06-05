@@ -50,20 +50,20 @@
 #include <utils/SystemInfo.hpp>
 #include <utils/TimeConversion.hpp>
 
-using namespace eprosima::fastrtps;
+using namespace eprosima::fastdds;
 
 namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-using namespace fastrtps::rtps;
+using namespace fastdds::rtps;
 
 static void direct_send(
         RTPSParticipantImpl* participant,
         LocatorList& locators,
         std::vector<GUID_t>& remote_readers,
         const CacheChange_t& change,
-        fastrtps::rtps::Endpoint& sender_endpt)
+        fastdds::rtps::Endpoint& sender_endpt)
 {
     DirectMessageSender sender(participant, &remote_readers, &locators);
     RTPSMessageGroup group(participant, &sender_endpt, &sender);
@@ -287,7 +287,7 @@ bool PDPClient::create_ds_pdp_best_effort_reader(
     if (mp_RTPSParticipant->createReader(&reader, ratt, endpoints.stateless_reader.history_.get(),
             endpoints.stateless_reader.listener_.get(), c_EntityId_SPDPReader, true, false))
     {
-        endpoints.stateless_reader.reader_ = dynamic_cast<fastrtps::rtps::StatelessReader*>(reader);
+        endpoints.stateless_reader.reader_ = dynamic_cast<fastdds::rtps::StatelessReader*>(reader);
         mp_RTPSParticipant->set_endpoint_rtps_protection_supports(reader, false);
     }
     // Could not create PDP Reader, so return false
@@ -369,7 +369,7 @@ bool PDPClient::create_ds_pdp_reliable_endpoints(
             endpoints.reader.listener_.get(),
             reader_entity, true, false))
     {
-        endpoints.reader.reader_ = dynamic_cast<fastrtps::rtps::StatefulReader*>(reader);
+        endpoints.reader.reader_ = dynamic_cast<fastdds::rtps::StatefulReader*>(reader);
 
 #if HAVE_SECURITY
         mp_RTPSParticipant->set_endpoint_rtps_protection_supports(reader, false);
@@ -429,7 +429,7 @@ bool PDPClient::create_ds_pdp_reliable_endpoints(
 #endif // if HAVE_SECURITY
     if (mp_RTPSParticipant->createWriter(&wout, watt, endpoints.writer.history_.get(), nullptr, writer_entity, true))
     {
-        endpoints.writer.writer_ = dynamic_cast<fastrtps::rtps::StatefulWriter*>(wout);
+        endpoints.writer.writer_ = dynamic_cast<fastdds::rtps::StatefulWriter*>(wout);
 
 #if HAVE_SECURITY
         mp_RTPSParticipant->set_endpoint_rtps_protection_supports(wout, false);
@@ -710,7 +710,7 @@ void PDPClient::announceParticipantState(
     if (enabled_)
     {
         auto endpoints = static_cast<fastdds::rtps::DiscoveryServerPDPEndpoints*>(builtin_endpoints_.get());
-        fastrtps::rtps::StatefulWriter& writer = *(endpoints->writer.writer_);
+        fastdds::rtps::StatefulWriter& writer = *(endpoints->writer.writer_);
         WriterHistory& history = *endpoints->writer.history_;
 
         /*

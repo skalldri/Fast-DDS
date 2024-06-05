@@ -50,13 +50,13 @@
 #endif //FASTDDS_STATISTICS
 
 using namespace eprosima::fastdds::rtps;
-using namespace eprosima::fastrtps;
+using namespace eprosima::fastdds;
 using eprosima::fastdds::dds::PublicationMatchedStatus;
 using eprosima::fastdds::dds::SubscriptionMatchedStatus;
 using ParameterList = eprosima::fastdds::dds::ParameterList;
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 using reader_map_helper = utilities::collections::map_size_helper<GUID_t, SubscriptionMatchedStatus>;
@@ -174,7 +174,7 @@ bool EDP::newLocalReaderProxyData(
                     {
                         fastdds::dds::xtypes::TypeInformation type_info;
                         if (eprosima::fastdds::dds::RETCODE_OK ==
-                                eprosima::fastrtps::rtps::RTPSDomainImpl::get_instance()->type_object_registry_observer()
+                                eprosima::fastdds::rtps::RTPSDomainImpl::get_instance()->type_object_registry_observer()
                                         .get_type_information(rpd->typeName().c_str(), type_info))
                         {
                             rpd->type_information() = type_info;
@@ -281,7 +281,7 @@ bool EDP::newLocalWriterProxyData(
                     {
                         fastdds::dds::xtypes::TypeInformation type_info;
                         if (eprosima::fastdds::dds::RETCODE_OK ==
-                                eprosima::fastrtps::rtps::RTPSDomainImpl::get_instance()->type_object_registry_observer()
+                                eprosima::fastdds::rtps::RTPSDomainImpl::get_instance()->type_object_registry_observer()
                                         .get_type_information(wpd->typeName().c_str(), type_info))
                         {
                             wpd->type_information() = type_info;
@@ -375,7 +375,7 @@ bool EDP::updatedLocalReader(
                     {
                         fastdds::dds::xtypes::TypeInformation type_info;
                         if (eprosima::fastdds::dds::RETCODE_OK ==
-                                eprosima::fastrtps::rtps::RTPSDomainImpl::get_instance()->type_object_registry_observer()
+                                eprosima::fastdds::rtps::RTPSDomainImpl::get_instance()->type_object_registry_observer()
                                         .get_type_information(rdata->typeName().c_str(), type_info))
                         {
                             rdata->type_information() = type_info;
@@ -442,7 +442,7 @@ bool EDP::updatedLocalWriter(
                     {
                         fastdds::dds::xtypes::TypeInformation type_info;
                         if (eprosima::fastdds::dds::RETCODE_OK ==
-                                eprosima::fastrtps::rtps::RTPSDomainImpl::get_instance()->type_object_registry_observer()
+                                eprosima::fastdds::rtps::RTPSDomainImpl::get_instance()->type_object_registry_observer()
                                         .get_type_information(wdata->typeName().c_str(), type_info))
                         {
                             wdata->type_information() = type_info;
@@ -1485,5 +1485,5 @@ const fastdds::dds::PublicationMatchedStatus& EDP::update_publication_matched_st
 
 } // namespace rtps
 
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima

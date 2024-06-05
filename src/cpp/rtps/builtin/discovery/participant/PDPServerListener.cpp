@@ -37,7 +37,7 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-using namespace eprosima::fastrtps::rtps;
+using namespace eprosima::fastdds::rtps;
 
 PDPServerListener::PDPServerListener(
         PDPServer* in_PDP)
@@ -154,7 +154,7 @@ void PDPServerListener::onNewCacheChangeAdded(
                     pattr.ignore_non_matching_locators);
 
             /* Check PID_VENDOR_ID */
-            if (participant_data.m_VendorId != fastrtps::rtps::c_VendorId_eProsima)
+            if (participant_data.m_VendorId != fastdds::rtps::c_VendorId_eProsima)
             {
                 EPROSIMA_LOG_INFO(RTPS_PDP_LISTENER,
                         "DATA(p|Up) from different vendor is not supported for Discover-Server operation");

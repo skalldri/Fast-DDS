@@ -30,7 +30,7 @@
 #include "rtps/RTPSDomainImpl.hpp"
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 ReaderLocator::ReaderLocator(
@@ -236,5 +236,5 @@ void ReaderLocator::datasharing_notify()
 }
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

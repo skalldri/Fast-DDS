@@ -18,7 +18,7 @@
 
 #include <tuple>
 
-using namespace eprosima::fastrtps::rtps;
+using namespace eprosima::fastdds::rtps;
 using namespace ::testing;
 using namespace std;
 

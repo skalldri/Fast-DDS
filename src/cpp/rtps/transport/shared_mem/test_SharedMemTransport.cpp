@@ -49,10 +49,10 @@ TransportInterface* test_SharedMemTransportDescriptor::create_transport() const
 }
 
 bool test_SharedMemTransport::send(
-        const fastrtps::rtps::octet* send_buffer,
+        const fastdds::rtps::octet* send_buffer,
         uint32_t send_buffer_size,
-        fastrtps::rtps::LocatorsIterator* destination_locators_begin,
-        fastrtps::rtps::LocatorsIterator* destination_locators_end,
+        fastdds::rtps::LocatorsIterator* destination_locators_begin,
+        fastdds::rtps::LocatorsIterator* destination_locators_end,
         const std::chrono::steady_clock::time_point& max_blocking_time_point)
 {
     if (send_buffer_size >= big_buffer_size_)

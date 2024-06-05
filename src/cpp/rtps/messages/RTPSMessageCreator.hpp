@@ -28,7 +28,7 @@
 #include <rtps/messages/CDRMessage.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 //!An interface to add inline qos parameters to a CDRMessage

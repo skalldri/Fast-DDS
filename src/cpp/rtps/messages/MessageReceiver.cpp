@@ -42,7 +42,7 @@
 using ParameterList = eprosima::fastdds::dds::ParameterList;
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 MessageReceiver::MessageReceiver(
@@ -1543,5 +1543,5 @@ void MessageReceiver::notify_network_statistics(
 }
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

@@ -43,7 +43,7 @@
 #include <utils/TimeConversion.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 static void set_builtin_reader_history_attributes(
@@ -1115,5 +1115,5 @@ void WLP::update_liveliness_changed_status(
 }
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

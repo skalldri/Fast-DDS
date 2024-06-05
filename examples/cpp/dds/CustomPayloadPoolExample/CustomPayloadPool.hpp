@@ -26,7 +26,7 @@
 #include <fastdds/rtps/history/IPayloadPool.h>
 #include <fastdds/rtps/common/CacheChange.h>
 
-class CustomPayloadPool : public eprosima::fastrtps::rtps::IPayloadPool
+class CustomPayloadPool : public eprosima::fastdds::rtps::IPayloadPool
 {
 public:
 
@@ -34,7 +34,7 @@ public:
 
     bool get_payload(
             unsigned int size,
-            eprosima::fastrtps::rtps::CacheChange_t& cache_change)
+            eprosima::fastdds::rtps::CacheChange_t& cache_change)
     {
         // Reserve new memory for the payload buffer
         unsigned char* payload = new unsigned char[size];
@@ -51,9 +51,9 @@ public:
     }
 
     bool get_payload(
-            eprosima::fastrtps::rtps::SerializedPayload_t& data,
-            eprosima::fastrtps::rtps::IPayloadPool*& /*data_owner*/,
-            eprosima::fastrtps::rtps::CacheChange_t& cache_change)
+            eprosima::fastdds::rtps::SerializedPayload_t& data,
+            eprosima::fastdds::rtps::IPayloadPool*& /*data_owner*/,
+            eprosima::fastdds::rtps::CacheChange_t& cache_change)
     {
         // Reserve new memory for the payload buffer
         unsigned char* payload = new unsigned char[data.length];
@@ -73,7 +73,7 @@ public:
     }
 
     bool release_payload(
-            eprosima::fastrtps::rtps::CacheChange_t& cache_change)
+            eprosima::fastdds::rtps::CacheChange_t& cache_change)
     {
         // Ensure precondition
         if (this != cache_change.payload_owner())

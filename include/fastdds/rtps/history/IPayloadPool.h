@@ -25,7 +25,7 @@
 #include <memory>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 struct CacheChange_t;
@@ -124,7 +124,7 @@ public:
 };
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */
 
 

@@ -26,7 +26,7 @@
 #include <rtps/participant/RTPSParticipantImpl.h>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 
@@ -105,5 +105,5 @@ bool DirectMessageSender::send(
 }
 
 } /* namespace rtps */
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

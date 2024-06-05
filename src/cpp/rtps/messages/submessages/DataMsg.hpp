@@ -23,7 +23,7 @@
 #include <fastdds/core/policy/ParameterList.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 namespace {
@@ -438,5 +438,5 @@ bool RTPSMessageCreator::addSubmessageDataFrag(
 }
 
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima

@@ -153,7 +153,7 @@ public:
      * @return RETCODE_ERROR if the  operation fails.
      */
     efd::ReturnCode_t fill_discovery_data_from_cdr_message(
-            fastrtps::rtps::ParticipantProxyData& data,
+            fastdds::rtps::ParticipantProxyData& data,
             fastdds::statistics::MonitorServiceStatusData& msg);
 
     /**
@@ -166,7 +166,7 @@ public:
      * @return RETCODE_ERROR if the  operation fails.
      */
     efd::ReturnCode_t fill_discovery_data_from_cdr_message(
-            fastrtps::rtps::WriterProxyData& data,
+            fastdds::rtps::WriterProxyData& data,
             fastdds::statistics::MonitorServiceStatusData& msg);
 
     /**
@@ -179,7 +179,7 @@ public:
      * @return RETCODE_ERROR if the  operation fails.
      */
     efd::ReturnCode_t fill_discovery_data_from_cdr_message(
-            fastrtps::rtps::ReaderProxyData& data,
+            fastdds::rtps::ReaderProxyData& data,
             fastdds::statistics::MonitorServiceStatusData& msg);
 
     /**
@@ -287,7 +287,7 @@ protected:
      * @brief Implementation of the IStatusQueryable interface.
      */
     bool get_monitoring_status(
-            const fastrtps::rtps::GUID_t& entity_guid,
+            const fastdds::rtps::GUID_t& entity_guid,
             eprosima::fastdds::statistics::MonitorServiceData&) override;
 
     efd::Publisher* builtin_publisher_ = nullptr;

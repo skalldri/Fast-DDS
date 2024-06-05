@@ -25,7 +25,7 @@
 #include <cassert>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 namespace detail {
 
@@ -79,7 +79,7 @@ struct PayloadInfo_t
 
 }  // namespace detail
 }  // namespace rtps
-}  // namespace fastrtps
+}  // namespace fastdds
 }  // namespace eprosima
 
 #endif  // RTPS_COMMON_PAYLOADINFO_T_HPP_

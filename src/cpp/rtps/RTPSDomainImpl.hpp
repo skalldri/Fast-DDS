@@ -35,7 +35,7 @@
 #include <fastdds/xtypes/type_representation/TypeObjectRegistry.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 /**
@@ -318,7 +318,7 @@ private:
 };
 
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima
 
 #endif  // _RTPS_RTPSDOMAINIMPL_HPP_

@@ -26,7 +26,7 @@
 #include <cassert>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 #ifndef DOXYGEN_SHOULD_SKIP_THIS_PUBLIC
@@ -210,7 +210,7 @@ struct ChangeForReaderCmp
 #endif // ifndef DOXYGEN_SHOULD_SKIP_THIS_PUBLIC
 
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima
 
 #endif /* _FASTDDS_RTPS_CHANGEFORREADER_H_ */

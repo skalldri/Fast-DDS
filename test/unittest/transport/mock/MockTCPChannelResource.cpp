@@ -15,7 +15,7 @@
 #include "MockTCPChannelResource.h"
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 MockTCPChannelResource::MockTCPChannelResource(
@@ -102,5 +102,5 @@ void MockTCPChannelResource::shutdown(
 }
 
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima

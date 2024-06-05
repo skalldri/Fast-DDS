@@ -45,11 +45,11 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-using octet = fastrtps::rtps::octet;
-using SenderResource = fastrtps::rtps::SenderResource;
-using LocatorSelectorEntry = fastrtps::rtps::LocatorSelectorEntry;
-using LocatorSelector = fastrtps::rtps::LocatorSelector;
-using PortParameters = fastrtps::rtps::PortParameters;
+using octet = fastdds::rtps::octet;
+using SenderResource = fastdds::rtps::SenderResource;
+using LocatorSelectorEntry = fastdds::rtps::LocatorSelectorEntry;
+using LocatorSelector = fastdds::rtps::LocatorSelector;
+using PortParameters = fastdds::rtps::PortParameters;
 
 TransportInterface* SharedMemTransportDescriptor::create_transport() const
 {
@@ -245,7 +245,7 @@ bool SharedMemTransport::DoInputLocatorsMatch(
 }
 
 bool SharedMemTransport::init(
-        const fastrtps::rtps::PropertyPolicy*,
+        const fastdds::rtps::PropertyPolicy*,
         const uint32_t& max_msg_size_no_frag)
 {
     (void) max_msg_size_no_frag;
@@ -435,8 +435,8 @@ std::shared_ptr<SharedMemManager::Buffer> SharedMemTransport::copy_to_shared_buf
 bool SharedMemTransport::send(
         const octet* send_buffer,
         uint32_t send_buffer_size,
-        fastrtps::rtps::LocatorsIterator* destination_locators_begin,
-        fastrtps::rtps::LocatorsIterator* destination_locators_end,
+        fastdds::rtps::LocatorsIterator* destination_locators_begin,
+        fastdds::rtps::LocatorsIterator* destination_locators_end,
         const std::chrono::steady_clock::time_point& max_blocking_time_point)
 {
     using namespace eprosima::fastdds::statistics::rtps;
@@ -445,7 +445,7 @@ bool SharedMemTransport::send(
     cleanup_output_ports();
 #endif // if !defined(_WIN32)
 
-    fastrtps::rtps::LocatorsIterator& it = *destination_locators_begin;
+    fastdds::rtps::LocatorsIterator& it = *destination_locators_begin;
 
     bool ret = true;
 
@@ -599,7 +599,7 @@ bool SharedMemTransport::send(
 void SharedMemTransport::select_locators(
         LocatorSelector& selector) const
 {
-    fastrtps::ResourceLimitedVector<LocatorSelectorEntry*>& entries = selector.transport_starts();
+    fastdds::ResourceLimitedVector<LocatorSelectorEntry*>& entries = selector.transport_starts();
 
     for (size_t i = 0; i < entries.size(); ++i)
     {

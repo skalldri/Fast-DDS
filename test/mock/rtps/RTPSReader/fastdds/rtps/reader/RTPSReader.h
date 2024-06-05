@@ -30,7 +30,7 @@
 #include <fastdds/rtps/reader/ReaderListener.h>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 class ResourceEvent;
@@ -110,7 +110,7 @@ public:
 
     MOCK_METHOD0(expectsInlineQos, bool());
 
-    MOCK_METHOD1(wait_for_unread_cache, bool (const eprosima::fastrtps::Duration_t& timeout));
+    MOCK_METHOD1(wait_for_unread_cache, bool (const eprosima::fastdds::Duration_t& timeout));
 
     MOCK_METHOD0(get_unread_count, uint64_t());
 
@@ -234,7 +234,7 @@ public:
 };
 
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima
 
 #endif // _FASTDDS_RTPS_READER_RTPSREADER_H_

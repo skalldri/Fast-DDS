@@ -22,7 +22,7 @@
 #include <stdexcept>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 
 template<typename ochar, typename ichar>
 std::basic_string<ochar> string_convert(
@@ -152,5 +152,5 @@ std::string wstring_to_bytes(
     return string_convert<char>(pbeg, pbeg + str.size());
 }
 
-} /* namespace fastrtps */
+} /* namespace fastdds */
 } /* namespace eprosima */

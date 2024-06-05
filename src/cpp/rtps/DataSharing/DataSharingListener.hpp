@@ -33,7 +33,7 @@
 #include <utils/thread.hpp>
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 class RTPSReader;
@@ -125,7 +125,7 @@ protected:
 };
 
 }  // namespace rtps
-}  // namespace fastrtps
+}  // namespace fastdds
 }  // namespace eprosima
 
 #endif  // RTPS_DATASHARING_DATASHARINGLISTENER_HPP

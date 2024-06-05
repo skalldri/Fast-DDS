@@ -23,7 +23,7 @@ namespace eprosima {
 namespace fastdds {
 namespace rtps {
 
-using Locator_t = eprosima::fastrtps::rtps::Locator_t;
+using Locator_t = eprosima::fastdds::rtps::Locator_t;
 
 class MockTCPv4Transport : public TCPv4Transport
 {
@@ -56,9 +56,9 @@ public:
     }
 
     bool send(
-            const fastrtps::rtps::octet* send_buffer,
+            const fastdds::rtps::octet* send_buffer,
             uint32_t send_buffer_size,
-            const fastrtps::rtps::Locator_t& send_resource_locator,
+            const fastdds::rtps::Locator_t& send_resource_locator,
             const Locator_t& remote_locator)
     {
         return TCPv4Transport::send(send_buffer, send_buffer_size, send_resource_locator, remote_locator);
@@ -72,7 +72,7 @@ public:
 };
 
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima
 
 #endif //MOCK_TRANSPORT_TCP4_STUFF_H

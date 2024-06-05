@@ -28,7 +28,7 @@
 #endif // if HAVE_SECURITY
 
 namespace eprosima {
-namespace fastrtps {
+namespace fastdds {
 namespace rtps {
 
 using ::testing::Return;
@@ -482,7 +482,7 @@ TEST_F(EdpTests, CheckDataRepresentationCompatibility)
 }
 
 } // namespace rtps
-} // namespace fastrtps
+} // namespace fastdds
 } // namespace eprosima
 
 int main(
