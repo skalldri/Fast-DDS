@@ -38,7 +38,7 @@ Forthcoming
 * Added new `flow_controller_descriptor_list` XML configuration, remove `ThroughtputController`.
 * Migrate `#define`s within `BuiltinEndpoints.hpp` to namespaced `constexpr` variables.
 * Make `StdoutErrConsumer` the default log consumer.
-
+* Migrate fastrtps namespace to fastdds
 
 Version 2.14.0
 --------------
