@@ -612,9 +612,6 @@ bool StatelessReader::processDataMsg(
             // Copy metadata to reserved change
             change_to_add->copy_not_memcpy(change);
 
-            // Ask payload pool to copy the payload
-            IPayloadPool* payload_owner = change->payload_owner();
-
             bool is_datasharing = std::any_of(matched_writers_.begin(), matched_writers_.end(),
                             [&change](const RemoteWriterInfo_t& writer)
                             {
@@ -624,7 +621,7 @@ bool StatelessReader::processDataMsg(
             if (is_datasharing)
             {
                 //We may receive the change from the listener (with owner a ReaderPool) or intraprocess (with owner a WriterPool)
-                ReaderPool* datasharing_pool = dynamic_cast<ReaderPool*>(payload_owner);
+                ReaderPool* datasharing_pool = dynamic_cast<ReaderPool*>(change->payload_owner());
                 if (!datasharing_pool)
                 {
                     datasharing_pool = datasharing_listener_->get_pool_for_writer(change->writerGUID).get();
@@ -638,11 +635,7 @@ bool StatelessReader::processDataMsg(
                 }
                 datasharing_pool->get_datasharing_change(change->serializedPayload, *change_to_add);
             }
-            else if (payload_pool_->get_payload(change->serializedPayload, change_to_add->serializedPayload))
-            {
-                change->payload_owner(payload_owner);
-            }
-            else
+            else if (!payload_pool_->get_payload(change->serializedPayload, change_to_add->serializedPayload))
             {
                 EPROSIMA_LOG_WARNING(RTPS_MSG_IN, IDSTRING "Problem copying CacheChange, received data is: "
                         << change->serializedPayload.length << " bytes and max size in reader "
