@@ -147,8 +147,12 @@ set(DATAWRITERTESTS_SOURCE DataWriterTests.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/rtps/participant/RTPSParticipant.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/rtps/participant/RTPSParticipantImpl.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/rtps/persistence/PersistenceFactory.cpp
+<<<<<<< HEAD
     ${PROJECT_SOURCE_DIR}/src/cpp/rtps/persistence/sqlite3.c
     ${PROJECT_SOURCE_DIR}/src/cpp/rtps/persistence/SQLite3PersistenceService.cpp
+=======
+    ${PROJECT_SOURCE_DIR}/src/cpp/rtps/reader/reader_utils.cpp
+>>>>>>> 9a64956e2 ([20815] Only apply content filter to ALIVE changes (#4876))
     ${PROJECT_SOURCE_DIR}/src/cpp/rtps/reader/RTPSReader.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/rtps/reader/StatefulPersistentReader.cpp
     ${PROJECT_SOURCE_DIR}/src/cpp/rtps/reader/StatefulReader.cpp
