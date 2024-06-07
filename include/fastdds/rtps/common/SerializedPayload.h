@@ -93,8 +93,17 @@ struct FASTDDS_EXPORTED_API SerializedPayload_t
         this->reserve(len);
     }
 
+    /*!
+     * Destructor
+     * A call to \ref release_payload() is expected before the \ref empty() is called if the
+     * payload_owner is not nullptr.
+     */
     ~SerializedPayload_t()
     {
+        if (payload_owner != nullptr)
+        {
+            payload_owner->release_payload(*this);
+        }
         this->empty();
     }
 
@@ -107,7 +116,7 @@ struct FASTDDS_EXPORTED_API SerializedPayload_t
     }
 
     /*!
-     * Copy another structure (including allocating new space for the data.)
+     * Copy another structure (including allocating new space for the data).
      * @param[in] serData Pointer to the structure to copy
      * @param with_limit if true, the function will fail when providing a payload too big
      * @return True if correct
@@ -153,13 +162,12 @@ struct FASTDDS_EXPORTED_API SerializedPayload_t
         return true;
     }
 
-    //! Empty the payload
+    /*!
+     * Empty the payload
+     * @pre payload_owner must be nullptr
+     */
     void empty()
     {
-        if (payload_owner != nullptr)
-        {
-            payload_owner->release_payload(*this);
-        }
         assert(payload_owner == nullptr);
 
         length = 0;
