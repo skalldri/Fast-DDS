@@ -164,7 +164,7 @@ static void configure_current_thread_affinity(
     // We only consider up to the total number of CPU's the
     // system has.
     //
-    cpu_count = get_nprocs_conf();
+    cpu_count = sysconf(_SC_NPROCESSORS_CONF);
 
     for (a = 0; a < cpu_count; a++)
     {
