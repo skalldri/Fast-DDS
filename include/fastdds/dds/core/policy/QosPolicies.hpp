@@ -2048,7 +2048,7 @@ public:
      *
      * @since 2.4.0
      */
-    std::string flow_controller_name = fastdds::rtps::FASTDDS_FLOW_CONTROLLER_DEFAULT;
+    const char* flow_controller_name = fastdds::rtps::FASTDDS_FLOW_CONTROLLER_DEFAULT;
 
     inline void clear() override
     {
@@ -2060,7 +2060,7 @@ public:
             const PublishModeQosPolicy& b) const
     {
         return (this->kind == b.kind) &&
-               flow_controller_name == b.flow_controller_name.c_str() &&
+               0 == strcmp(flow_controller_name, b.flow_controller_name) &&
                QosPolicy::operator ==(b);
     }
 
@@ -2798,8 +2798,9 @@ public:
     //! Thread settings for the builtin transports reception threads
     rtps::ThreadSettings builtin_transports_reception_threads_;
 
-    /*! Maximum message size used to avoid fragmentation, set ONLY in LARGE_DATA. If this value is
-     * not zero, the network factory will allow the initialization of UDP transports with maxMessageSize
+    /*!
+     * @brief Maximum message size used to avoid fragmentation, set ONLY in LARGE_DATA.
+     * If this value is not zero, the network factory will allow the initialization of UDP transports with maxMessageSize
      * higher than 65500K.
      */
     uint32_t max_msg_size_no_frag;
